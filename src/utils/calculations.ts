@@ -2,7 +2,6 @@ export const calculateImpermanentLoss = (
   priceChange: number,
   initialRatio: number = 0.5
 ): number => {
-  const ratio = initialRatio;
   const k = Math.sqrt(priceChange);
   const il = (2 * k) / (1 + k) - 1;
   return Math.abs(il) * 100;

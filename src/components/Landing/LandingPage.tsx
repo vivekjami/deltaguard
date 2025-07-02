@@ -10,7 +10,6 @@ import {
   Users,
   DollarSign,
   BarChart3,
-  Lock,
   Sparkles
 } from 'lucide-react';
 
@@ -330,10 +329,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
             </div>
             
             <div className="flex items-center space-x-6 text-slate-400">
-              <a href="#" className="hover:text-white transition-colors">Documentation</a>
-              <a href="#" className="hover:text-white transition-colors">Discord</a>
-              <a href="#" className="hover:text-white transition-colors">Twitter</a>
-              <a href="#" className="hover:text-white transition-colors">GitHub</a>
+              <a href="/" className="hover:text-white transition-colors">Documentation</a>
+              <a href="/" className="hover:text-white transition-colors">Discord</a>
+              <a href="/" className="hover:text-white transition-colors">Twitter</a>
+              <a href="/" className="hover:text-white transition-colors">GitHub</a>
             </div>
           </div>
           
