@@ -1,39 +1,25 @@
-import React, { useState } from 'react';
-import LandingPage from './components/Landing/LandingPage';
-import Dashboard from './components/Dashboard/Dashboard';
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'landing' | 'dashboard'>('landing');
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
-
-  const handleEnterApp = () => {
-    setCurrentPage('dashboard');
-  };
-
-  const handleConnectWallet = () => {
-    setIsWalletConnected(true);
-    setCurrentPage('dashboard');
-  };
-
-  const handleBackToLanding = () => {
-    setCurrentPage('landing');
-    setIsWalletConnected(false);
-  };
-
-  if (currentPage === 'landing') {
-    return (
-      <LandingPage 
-        onEnterApp={handleEnterApp}
-        onConnectWallet={handleConnectWallet}
-      />
-    );
-  }
-
   return (
-    <Dashboard 
-      isWalletConnected={isWalletConnected}
-      onBackToLanding={handleBackToLanding}
-    />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
