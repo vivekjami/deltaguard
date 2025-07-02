@@ -10,7 +10,11 @@ import {
   Users,
   DollarSign,
   BarChart3,
-  Sparkles
+  Sparkles,
+  Target,
+  Activity,
+  Lock,
+  Layers
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -21,6 +25,7 @@ interface LandingPageProps {
 const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }) => {
   const [scrollY, setScrollY] = useState(0);
   const [currentStat, setCurrentStat] = useState(0);
+  const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -35,6 +40,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const animationInterval = setInterval(() => {
+      setAnimationStep((prev) => (prev + 1) % 4);
+    }, 4000);
+    return () => clearInterval(animationInterval);
+  }, []);
+
   const stats = [
     { label: 'Total Value Protected', value: '$127.3M', change: '+23.4%' },
     { label: 'Average APY', value: '24.7%', change: '+5.2%' },
@@ -46,52 +58,84 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
       icon: Shield,
       title: 'Delta-Neutral Protection',
       description: 'Eliminate impermanent loss with sophisticated hedging strategies that maintain market-neutral positions.',
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: 'from-primary-blue to-light-blue',
+      bgColor: 'bg-primary-blue/10'
     },
     {
       icon: Zap,
       title: 'JIT Liquidity Optimization',
       description: 'Access up to 50x liquidity depth through EulerSwap\'s revolutionary just-in-time liquidity system.',
-      gradient: 'from-purple-500 to-pink-500'
+      gradient: 'from-sage-green to-mint-green',
+      bgColor: 'bg-sage-green/10'
     },
     {
       icon: BarChart3,
       title: 'Automated Rebalancing',
       description: 'Smart contracts continuously monitor and rebalance positions to maintain optimal delta ratios.',
-      gradient: 'from-emerald-500 to-teal-500'
+      gradient: 'from-forest-green to-sage-green',
+      bgColor: 'bg-forest-green/10'
+    }
+  ];
+
+  const storySteps = [
+    {
+      icon: DollarSign,
+      title: 'Provide Liquidity',
+      description: 'Add your assets to earn trading fees',
+      color: 'text-sage-green'
+    },
+    {
+      icon: Target,
+      title: 'Auto-Hedge',
+      description: 'Smart contracts protect your position',
+      color: 'text-primary-blue'
+    },
+    {
+      icon: Activity,
+      title: 'Monitor & Rebalance',
+      description: 'Continuous optimization for maximum yield',
+      color: 'text-forest-green'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Earn Protected Yield',
+      description: 'Enjoy returns without impermanent loss',
+      color: 'text-mint-green'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white overflow-hidden">
-      {/* Animated Background */}
-      <div className="fixed inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 animate-pulse"></div>
+    <div className="min-h-screen bg-gradient-to-br from-pearl via-warm-cream to-cream text-navy overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 opacity-20">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-primary-blue/30 to-light-blue/30 rounded-full animate-float"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-sage-green/30 to-mint-green/30 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-40 left-1/4 w-20 h-20 bg-gradient-to-br from-forest-green/30 to-sage-green/30 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-500/10 to-transparent"
-          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+          className="absolute inset-0 bg-gradient-to-br from-transparent via-primary-blue/5 to-transparent"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
         ></div>
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-50 px-6 py-6">
+      <nav className="relative z-50 px-6 py-6 bg-white/80 backdrop-blur-xl border-b border-primary-blue/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+          <div className="flex items-center space-x-3 animate-slide-up">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-blue to-light-blue rounded-xl flex items-center justify-center shadow-lg">
               <Shield className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary-blue to-forest-green bg-clip-text text-transparent">
               DeltaGuard
             </span>
           </div>
           
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-slate-300 hover:text-white transition-colors">Features</a>
-            <a href="#how-it-works" className="text-slate-300 hover:text-white transition-colors">How it Works</a>
-            <a href="#security" className="text-slate-300 hover:text-white transition-colors">Security</a>
+          <div className="hidden md:flex items-center space-x-8 animate-fade-in">
+            <a href="#features" className="text-slate-blue hover:text-navy transition-colors font-medium">Features</a>
+            <a href="#how-it-works" className="text-slate-blue hover:text-navy transition-colors font-medium">How it Works</a>
+            <a href="#security" className="text-slate-blue hover:text-navy transition-colors font-medium">Security</a>
             <button 
               onClick={onConnectWallet}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 py-2 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-primary-blue to-light-blue hover:from-light-blue hover:to-primary-blue text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               Connect Wallet
             </button>
@@ -103,47 +147,47 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
       <section className="relative z-10 px-6 pt-20 pb-32">
         <div className="max-w-7xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
-            <Sparkles className="w-4 h-4 text-blue-400" />
-            <span className="text-blue-400 text-sm font-medium">Built for EulerSwap • Delta-Neutral Strategies</span>
+          <div className="inline-flex items-center space-x-2 bg-primary-blue/10 border border-primary-blue/20 rounded-full px-4 py-2 mb-8 animate-scale-in">
+            <Sparkles className="w-4 h-4 text-primary-blue" />
+            <span className="text-primary-blue text-sm font-medium">Built for EulerSwap • Delta-Neutral Strategies</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
-            <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight animate-slide-up">
+            <span className="bg-gradient-to-r from-navy via-primary-blue to-forest-green bg-clip-text text-transparent">
               Eliminate
             </span>
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sage-green to-mint-green bg-clip-text text-transparent">
               Impermanent Loss
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-blue mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Advanced delta-neutral liquidity strategies that protect your capital while maximizing yield. 
             Built on EulerSwap's revolutionary unified capital model.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16 animate-scale-in" style={{ animationDelay: '0.6s' }}>
             <button 
               onClick={onEnterApp}
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+              className="group bg-gradient-to-r from-primary-blue to-light-blue hover:from-light-blue hover:to-primary-blue text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 shadow-xl"
             >
               <span>Launch App</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             
-            <button className="group flex items-center space-x-2 text-slate-300 hover:text-white transition-colors">
-              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                <Play className="w-5 h-5 ml-1" />
+            <button className="group flex items-center space-x-2 text-slate-blue hover:text-navy transition-colors">
+              <div className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white transition-colors shadow-lg">
+                <Play className="w-5 h-5 ml-1 text-primary-blue" />
               </div>
               <span className="font-medium">Watch Demo</span>
             </button>
           </div>
 
           {/* Live Stats */}
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 max-w-4xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/10 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl animate-slide-up" style={{ animationDelay: '0.9s' }}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {stats.map((stat, index) => (
                 <div 
@@ -152,11 +196,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
                     currentStat === index ? 'scale-105 opacity-100' : 'opacity-70'
                   }`}
                 >
-                  <div className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  <div className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-primary-blue to-sage-green bg-clip-text text-transparent">
                     {stat.value}
                   </div>
-                  <div className="text-slate-300 mb-1">{stat.label}</div>
-                  <div className="text-green-400 text-sm font-medium">{stat.change} this week</div>
+                  <div className="text-slate-blue mb-1 font-medium">{stat.label}</div>
+                  <div className="text-sage-green text-sm font-medium">{stat.change} this week</div>
                 </div>
               ))}
             </div>
@@ -164,8 +208,67 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-slate-400" />
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-gentle">
+          <ChevronDown className="w-6 h-6 text-slate-blue" />
+        </div>
+      </section>
+
+      {/* Animated Story Section */}
+      <section className="relative z-10 px-6 py-32 bg-gradient-to-r from-white/50 to-warm-cream/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-navy to-primary-blue bg-clip-text text-transparent">
+              Your Journey to Protected Yield
+            </h2>
+            <p className="text-xl text-slate-blue max-w-3xl mx-auto">
+              Watch how DeltaGuard transforms your liquidity provision experience
+            </p>
+          </div>
+
+          {/* Animated Story Flow */}
+          <div className="relative">
+            {/* Connection Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary-blue via-sage-green to-forest-green rounded-full opacity-30"></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+              {storySteps.map((step, index) => {
+                const Icon = step.icon;
+                const isActive = animationStep === index;
+                
+                return (
+                  <div 
+                    key={index}
+                    className={`text-center transition-all duration-1000 ${
+                      isActive ? 'scale-110 opacity-100' : 'scale-100 opacity-60'
+                    }`}
+                  >
+                    <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center transition-all duration-500 ${
+                      isActive 
+                        ? 'bg-white shadow-2xl transform scale-110' 
+                        : 'bg-white/80 shadow-lg'
+                    }`}>
+                      <Icon className={`w-10 h-10 ${step.color} ${isActive ? 'animate-pulse' : ''}`} />
+                    </div>
+                    
+                    <div className={`w-8 h-8 mx-auto mb-4 rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-500 ${
+                      isActive 
+                        ? 'bg-gradient-to-r from-primary-blue to-sage-green shadow-lg' 
+                        : 'bg-slate-blue/50'
+                    }`}>
+                      {index + 1}
+                    </div>
+                    
+                    <h3 className={`text-xl font-bold mb-2 transition-colors duration-500 ${
+                      isActive ? 'text-navy' : 'text-slate-blue'
+                    }`}>
+                      {step.title}
+                    </h3>
+                    <p className="text-slate-blue text-sm">{step.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -173,10 +276,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
       <section id="features" className="relative z-10 px-6 py-32">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-navy to-forest-green bg-clip-text text-transparent">
               Revolutionary Features
             </h2>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-blue max-w-3xl mx-auto">
               Cutting-edge technology that redefines liquidity provision in DeFi
             </p>
           </div>
@@ -187,13 +290,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
               return (
                 <div 
                   key={index}
-                  className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 transform hover:scale-105"
+                  className={`group ${feature.bgColor} backdrop-blur-xl border border-primary-blue/10 rounded-3xl p-8 hover:bg-white/80 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl`}
                 >
-                  <div className={`w-16 h-16 bg-gradient-to-r ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-16 h-16 bg-gradient-to-r ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">{feature.title}</h3>
-                  <p className="text-slate-400 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-navy">{feature.title}</h3>
+                  <p className="text-slate-blue leading-relaxed">{feature.description}</p>
                 </div>
               );
             })}
@@ -202,70 +305,70 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="relative z-10 px-6 py-32 bg-gradient-to-r from-blue-950/20 to-purple-950/20">
+      <section id="how-it-works" className="relative z-10 px-6 py-32 bg-gradient-to-r from-primary-blue/5 to-sage-green/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-navy to-forest-green bg-clip-text text-transparent">
               How It Works
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+              <div className="flex items-start space-x-4 animate-slide-up">
+                <div className="w-8 h-8 bg-gradient-to-r from-primary-blue to-light-blue rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
                   1
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Provide Liquidity</h3>
-                  <p className="text-slate-400">Add liquidity to EulerSwap pools and earn trading fees</p>
+                  <h3 className="text-xl font-bold mb-2 text-navy">Provide Liquidity</h3>
+                  <p className="text-slate-blue">Add liquidity to EulerSwap pools and earn trading fees</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+              <div className="flex items-start space-x-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+                <div className="w-8 h-8 bg-gradient-to-r from-sage-green to-mint-green rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
                   2
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Auto-Hedge Position</h3>
-                  <p className="text-slate-400">Smart contracts automatically hedge your position to maintain delta neutrality</p>
+                  <h3 className="text-xl font-bold mb-2 text-navy">Auto-Hedge Position</h3>
+                  <p className="text-slate-blue">Smart contracts automatically hedge your position to maintain delta neutrality</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+              <div className="flex items-start space-x-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+                <div className="w-8 h-8 bg-gradient-to-r from-forest-green to-sage-green rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
                   3
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Earn Protected Yield</h3>
-                  <p className="text-slate-400">Enjoy LP fees + lending yield while being protected from impermanent loss</p>
+                  <h3 className="text-xl font-bold mb-2 text-navy">Earn Protected Yield</h3>
+                  <p className="text-slate-blue">Enjoy LP fees + lending yield while being protected from impermanent loss</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/10 rounded-3xl p-8 shadow-2xl animate-scale-in">
               <div className="text-center mb-6">
-                <div className="text-4xl font-bold text-white mb-2">98.9%</div>
-                <div className="text-slate-400">Impermanent Loss Protection</div>
+                <div className="text-4xl font-bold text-navy mb-2">98.9%</div>
+                <div className="text-slate-blue font-medium">Impermanent Loss Protection</div>
               </div>
               
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-400">LP Fees</span>
-                  <span className="text-green-400 font-medium">+12.4% APY</span>
+                  <span className="text-slate-blue">LP Fees</span>
+                  <span className="text-sage-green font-medium">+12.4% APY</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-400">Lending Yield</span>
-                  <span className="text-green-400 font-medium">+8.7% APY</span>
+                  <span className="text-slate-blue">Lending Yield</span>
+                  <span className="text-sage-green font-medium">+8.7% APY</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-400">Hedging Cost</span>
-                  <span className="text-red-400 font-medium">-6.3% APY</span>
+                  <span className="text-slate-blue">Hedging Cost</span>
+                  <span className="text-red-500 font-medium">-6.3% APY</span>
                 </div>
-                <div className="border-t border-white/10 pt-4">
+                <div className="border-t border-primary-blue/10 pt-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-white font-medium">Net APY</span>
-                    <span className="text-blue-400 font-bold text-xl">+24.7%</span>
+                    <span className="text-navy font-medium">Net APY</span>
+                    <span className="text-primary-blue font-bold text-xl">+24.7%</span>
                   </div>
                 </div>
               </div>
@@ -278,36 +381,36 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
       <section className="relative z-10 px-6 py-32">
         <div className="max-w-7xl mx-auto text-center">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <Users className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-white mb-1">1,247</div>
-              <div className="text-slate-400 text-sm">Active Users</div>
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/10 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <Users className="w-8 h-8 text-primary-blue mx-auto mb-3" />
+              <div className="text-2xl font-bold text-navy mb-1">1,247</div>
+              <div className="text-slate-blue text-sm">Active Users</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <DollarSign className="w-8 h-8 text-green-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-white mb-1">$127M</div>
-              <div className="text-slate-400 text-sm">TVL Protected</div>
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/10 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <DollarSign className="w-8 h-8 text-sage-green mx-auto mb-3" />
+              <div className="text-2xl font-bold text-navy mb-1">$127M</div>
+              <div className="text-slate-blue text-sm">TVL Protected</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-white mb-1">24.7%</div>
-              <div className="text-slate-400 text-sm">Avg APY</div>
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/10 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <TrendingUp className="w-8 h-8 text-forest-green mx-auto mb-3" />
+              <div className="text-2xl font-bold text-navy mb-1">24.7%</div>
+              <div className="text-slate-blue text-sm">Avg APY</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <Star className="w-8 h-8 text-yellow-400 mx-auto mb-3" />
-              <div className="text-2xl font-bold text-white mb-1">4.9/5</div>
-              <div className="text-slate-400 text-sm">User Rating</div>
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/10 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <Star className="w-8 h-8 text-yellow-500 mx-auto mb-3" />
+              <div className="text-2xl font-bold text-navy mb-1">4.9/5</div>
+              <div className="text-slate-blue text-sm">User Rating</div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/10 rounded-3xl p-12">
-            <h3 className="text-3xl font-bold mb-6 text-white">Ready to Protect Your Liquidity?</h3>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+          <div className="bg-gradient-to-r from-primary-blue/10 to-sage-green/10 backdrop-blur-xl border border-primary-blue/20 rounded-3xl p-12 shadow-2xl">
+            <h3 className="text-3xl font-bold mb-6 text-navy">Ready to Protect Your Liquidity?</h3>
+            <p className="text-xl text-slate-blue mb-8 max-w-2xl mx-auto">
               Join thousands of LPs who have eliminated impermanent loss while earning superior yields
             </p>
             <button 
               onClick={onConnectWallet}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-primary-blue to-sage-green hover:from-light-blue hover:to-mint-green text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               Start Earning Protected Yield
             </button>
@@ -316,27 +419,27 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp, onConnectWallet }
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 px-6 py-16 border-t border-white/10">
+      <footer className="relative z-10 px-6 py-16 border-t border-primary-blue/10 bg-white/50">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-blue to-sage-green rounded-lg flex items-center justify-center shadow-lg">
                 <Shield className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-primary-blue to-forest-green bg-clip-text text-transparent">
                 DeltaGuard
               </span>
             </div>
             
-            <div className="flex items-center space-x-6 text-slate-400">
-              <a href="/" className="hover:text-white transition-colors">Documentation</a>
-              <a href="/" className="hover:text-white transition-colors">Discord</a>
-              <a href="/" className="hover:text-white transition-colors">Twitter</a>
-              <a href="/" className="hover:text-white transition-colors">GitHub</a>
+            <div className="flex items-center space-x-6 text-slate-blue">
+              <a href="#" className="hover:text-navy transition-colors">Documentation</a>
+              <a href="#" className="hover:text-navy transition-colors">Discord</a>
+              <a href="#" className="hover:text-navy transition-colors">Twitter</a>
+              <a href="#" className="hover:text-navy transition-colors">GitHub</a>
             </div>
           </div>
           
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-slate-500">
+          <div className="mt-8 pt-8 border-t border-primary-blue/10 text-center text-slate-blue">
             <p>&copy; 2025 DeltaGuard. Built for EulerSwap Builder Competition.</p>
           </div>
         </div>

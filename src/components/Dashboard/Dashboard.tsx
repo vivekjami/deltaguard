@@ -56,22 +56,24 @@ const Dashboard: React.FC<DashboardProps> = ({ isWalletConnected, onBackToLandin
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-pearl via-warm-cream to-cream">
       {/* Navigation */}
-      <nav className="border-b border-slate-700/50 bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50">
+      <nav className="border-b border-primary-blue/10 bg-white/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center space-x-4">
               <button
                 onClick={onBackToLanding}
-                className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
+                className="p-2 hover:bg-primary-blue/10 rounded-lg transition-colors"
               >
-                <ArrowLeft className="w-5 h-5 text-slate-400" />
+                <ArrowLeft className="w-5 h-5 text-slate-blue" />
               </button>
               
               <div className="flex items-center space-x-3">
-                <div className="text-2xl">🛡️</div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <div className="w-8 h-8 bg-gradient-to-br from-primary-blue to-sage-green rounded-lg flex items-center justify-center">
+                  <span className="text-white text-lg">🛡️</span>
+                </div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-blue to-forest-green bg-clip-text text-transparent">
                   DeltaGuard
                 </h1>
               </div>
@@ -79,25 +81,25 @@ const Dashboard: React.FC<DashboardProps> = ({ isWalletConnected, onBackToLandin
             
             <div className="flex items-center space-x-4">
               <div className="text-right">
-                <div className="text-sm text-slate-400">Portfolio Value</div>
-                <div className="text-lg font-semibold text-white">$125,500</div>
+                <div className="text-sm text-slate-blue">Portfolio Value</div>
+                <div className="text-lg font-semibold text-navy">$125,500</div>
               </div>
               
-              <button className="p-2 hover:bg-slate-700 rounded-lg transition-colors relative">
-                <Bell className="w-5 h-5 text-slate-400" />
+              <button className="p-2 hover:bg-primary-blue/10 rounded-lg transition-colors relative">
+                <Bell className="w-5 h-5 text-slate-blue" />
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   1
                 </span>
               </button>
               
               {isWalletConnected ? (
-                <div className="flex items-center space-x-2 bg-slate-800 rounded-lg px-3 py-2">
-                  <Wallet className="w-4 h-4 text-green-400" />
-                  <span className="text-sm text-white">{formatAddress(walletAddress)}</span>
-                  <ChevronDown className="w-4 h-4 text-slate-400" />
+                <div className="flex items-center space-x-2 bg-sage-green/10 border border-sage-green/20 rounded-lg px-3 py-2">
+                  <Wallet className="w-4 h-4 text-sage-green" />
+                  <span className="text-sm text-navy">{formatAddress(walletAddress)}</span>
+                  <ChevronDown className="w-4 h-4 text-slate-blue" />
                 </div>
               ) : (
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                <button className="bg-gradient-to-r from-primary-blue to-light-blue hover:from-light-blue hover:to-primary-blue text-white px-4 py-2 rounded-lg font-medium transition-colors">
                   Connect Wallet
                 </button>
               )}
@@ -111,8 +113,8 @@ const Dashboard: React.FC<DashboardProps> = ({ isWalletConnected, onBackToLandin
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   activeTab === tab.id
-                    ? 'bg-blue-600 text-white'
-                    : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+                    ? 'bg-primary-blue text-white'
+                    : 'text-slate-blue hover:bg-primary-blue/10 hover:text-navy'
                 }`}
               >
                 <span>{tab.icon}</span>
