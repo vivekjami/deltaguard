@@ -12,55 +12,57 @@ const Overview: React.FC = () => {
 
   if (isLoading || !portfolio) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-pearl via-warm-cream to-cream flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
-          <p className="text-slate-400">Loading portfolio...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue mx-auto mb-4"></div>
+          <p className="text-slate-blue">Loading portfolio...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-pearl via-warm-cream to-cream">
       {/* Header */}
-      <header className="border-b border-slate-700/50 bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50">
+      <header className="border-b border-primary-blue/20 bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="text-2xl">🛡️</div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary-blue to-sage-green rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white text-lg">🛡️</span>
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-blue to-forest-green bg-clip-text text-transparent">
                 DeltaGuard
               </h1>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="text-right">
-                <div className="text-sm text-slate-400">Portfolio Value</div>
-                <div className="text-lg font-semibold text-white">
+                <div className="text-sm text-slate-blue">Portfolio Value</div>
+                <div className="text-lg font-semibold text-navy">
                   {formatCurrency(portfolio.totalValue)}
                 </div>
               </div>
               
-              <button className="p-2 hover:bg-slate-700 rounded-lg transition-colors relative">
-                <Bell className="w-5 h-5 text-slate-400" />
+              <button className="p-2 hover:bg-primary-blue/10 rounded-lg transition-colors relative">
+                <Bell className="w-5 h-5 text-slate-blue" />
                 {portfolio.alertCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
                     {portfolio.alertCount}
                   </span>
                 )}
               </button>
               
               {isWalletConnected ? (
-                <div className="flex items-center space-x-2 bg-slate-800 rounded-lg px-3 py-2">
-                  <Wallet className="w-4 h-4 text-green-400" />
-                  <span className="text-sm text-white">{formatAddress(walletAddress)}</span>
-                  <ChevronDown className="w-4 h-4 text-slate-400" />
+                <div className="flex items-center space-x-2 bg-sage-green/10 border border-sage-green/20 rounded-lg px-3 py-2">
+                  <Wallet className="w-4 h-4 text-sage-green" />
+                  <span className="text-sm text-navy">{formatAddress(walletAddress)}</span>
+                  <ChevronDown className="w-4 h-4 text-slate-blue" />
                 </div>
               ) : (
                 <button 
                   onClick={() => setIsWalletConnected(true)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                  className="bg-gradient-to-r from-primary-blue to-light-blue hover:from-light-blue hover:to-primary-blue text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
                 >
                   Connect Wallet
                 </button>
@@ -74,12 +76,12 @@ const Overview: React.FC = () => {
         {/* Hero Stats */}
         <div className="mb-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl p-6">
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <div className="flex items-center space-x-3 mb-2">
-                <DollarSign className="text-green-400" size={24} />
-                <span className="text-slate-400">Total Portfolio</span>
+                <DollarSign className="text-sage-green" size={24} />
+                <span className="text-slate-blue">Total Portfolio</span>
               </div>
-              <div className="text-3xl font-bold text-white mb-1">
+              <div className="text-3xl font-bold text-navy mb-1">
                 {formatCurrency(portfolio.totalValue)}
               </div>
               <div className="flex items-center space-x-2">
@@ -89,46 +91,46 @@ const Overview: React.FC = () => {
                 >
                   {formatPercentage(portfolio.totalPnlPercentage)}
                 </span>
-                <TrendingUp className="w-4 h-4 text-green-400" />
+                <TrendingUp className="w-4 h-4 text-sage-green" />
               </div>
             </div>
 
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl p-6">
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <div className="flex items-center space-x-3 mb-2">
-                <TrendingUp className="text-blue-400" size={24} />
-                <span className="text-slate-400">Average APY</span>
+                <TrendingUp className="text-primary-blue" size={24} />
+                <span className="text-slate-blue">Average APY</span>
               </div>
-              <div className="text-3xl font-bold text-blue-400 mb-1">
+              <div className="text-3xl font-bold text-primary-blue mb-1">
                 {portfolio.avgApy.toFixed(1)}%
               </div>
-              <div className="text-sm text-slate-500">
+              <div className="text-sm text-slate-blue">
                 Across {portfolio.activePositions} strategies
               </div>
             </div>
 
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl p-6">
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <div className="flex items-center space-x-3 mb-2">
-                <Shield className="text-yellow-400" size={24} />
-                <span className="text-slate-400">IL Protected</span>
+                <Shield className="text-forest-green" size={24} />
+                <span className="text-slate-blue">IL Protected</span>
               </div>
-              <div className="text-3xl font-bold text-yellow-400 mb-1">
+              <div className="text-3xl font-bold text-forest-green mb-1">
                 {portfolio.ilProtected}%
               </div>
-              <div className="text-sm text-slate-500">
+              <div className="text-sm text-slate-blue">
                 Delta-neutral hedging
               </div>
             </div>
 
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl p-6">
+            <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/20 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               <div className="flex items-center space-x-3 mb-2">
-                <Zap className="text-purple-400" size={24} />
-                <span className="text-slate-400">Active Positions</span>
+                <Zap className="text-mint-green" size={24} />
+                <span className="text-slate-blue">Active Positions</span>
               </div>
-              <div className="text-3xl font-bold text-purple-400 mb-1">
+              <div className="text-3xl font-bold text-mint-green mb-1">
                 {portfolio.activePositions}
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-slate-500">
+                <span className="text-sm text-slate-blue">
                   {portfolio.alertCount} alert{portfolio.alertCount !== 1 ? 's' : ''}
                 </span>
                 {portfolio.alertCount > 0 && (
@@ -141,13 +143,13 @@ const Overview: React.FC = () => {
 
         {/* Portfolio Chart */}
         <div className="mb-8">
-          <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl p-6">
+          <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/20 rounded-xl p-6 shadow-lg">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-white">Portfolio Performance</h2>
+              <h2 className="text-xl font-semibold text-navy">Portfolio Performance</h2>
               <div className="flex items-center space-x-2">
-                <button className="px-3 py-1 bg-blue-600 text-white rounded-lg text-sm">7D</button>
-                <button className="px-3 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm hover:bg-slate-600">30D</button>
-                <button className="px-3 py-1 bg-slate-700 text-slate-300 rounded-lg text-sm hover:bg-slate-600">90D</button>
+                <button className="px-3 py-1 bg-primary-blue text-white rounded-lg text-sm transition-all duration-300 hover:scale-105">7D</button>
+                <button className="px-3 py-1 bg-slate-blue/20 text-slate-blue rounded-lg text-sm hover:bg-slate-blue/30 transition-colors">30D</button>
+                <button className="px-3 py-1 bg-slate-blue/20 text-slate-blue rounded-lg text-sm hover:bg-slate-blue/30 transition-colors">90D</button>
               </div>
             </div>
             <PriceChart />
@@ -157,8 +159,8 @@ const Overview: React.FC = () => {
         {/* Strategy Cards */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-white">Active Strategies</h2>
-            <button className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+            <h2 className="text-xl font-semibold text-navy">Active Strategies</h2>
+            <button className="flex items-center space-x-2 bg-gradient-to-r from-primary-blue to-light-blue hover:from-light-blue hover:to-primary-blue text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg">
               <Plus className="w-4 h-4" />
               <span>Create New Strategy</span>
             </button>
@@ -178,29 +180,29 @@ const Overview: React.FC = () => {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl p-6">
-          <h2 className="text-xl font-semibold text-white mb-4">Recent Activity</h2>
+        <div className="bg-white/80 backdrop-blur-xl border border-primary-blue/20 rounded-xl p-6 shadow-lg">
+          <h2 className="text-xl font-semibold text-navy mb-4">Recent Activity</h2>
           <div className="space-y-3">
-            <div className="flex items-center justify-between py-3 border-b border-slate-700/50">
+            <div className="flex items-center justify-between py-3 border-b border-primary-blue/10">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span className="text-white">ETH/USDC strategy rebalanced</span>
+                <div className="w-2 h-2 bg-sage-green rounded-full animate-pulse"></div>
+                <span className="text-navy">ETH/USDC strategy rebalanced</span>
               </div>
-              <span className="text-slate-400 text-sm">2 hours ago</span>
+              <span className="text-slate-blue text-sm">2 hours ago</span>
             </div>
-            <div className="flex items-center justify-between py-3 border-b border-slate-700/50">
+            <div className="flex items-center justify-between py-3 border-b border-primary-blue/10">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <span className="text-white">BTC/USDC delta threshold reached</span>
+                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                <span className="text-navy">BTC/USDC delta threshold reached</span>
               </div>
-              <span className="text-slate-400 text-sm">4 hours ago</span>
+              <span className="text-slate-blue text-sm">4 hours ago</span>
             </div>
             <div className="flex items-center justify-between py-3">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                <span className="text-white">LINK/USDC position opened</span>
+                <div className="w-2 h-2 bg-primary-blue rounded-full animate-pulse"></div>
+                <span className="text-navy">LINK/USDC position opened</span>
               </div>
-              <span className="text-slate-400 text-sm">1 day ago</span>
+              <span className="text-slate-blue text-sm">1 day ago</span>
             </div>
           </div>
         </div>

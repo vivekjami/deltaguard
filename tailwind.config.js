@@ -23,6 +23,10 @@ module.exports = {
         'fade-in': 'fadeIn 1s ease-out',
         'scale-in': 'scaleIn 0.6s ease-out',
         'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+        'shimmer': 'shimmer 2s linear infinite',
+        'morph': 'morph 4s ease-in-out infinite',
+        'orbit': 'orbit 20s linear infinite',
       },
       keyframes: {
         float: {
@@ -45,6 +49,25 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+        glow: {
+          '0%': { boxShadow: '0 0 20px rgba(37, 99, 235, 0.3)' },
+          '100%': { boxShadow: '0 0 40px rgba(37, 99, 235, 0.6)' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        morph: {
+          '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+          '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+        },
+        orbit: {
+          '0%': { transform: 'rotate(0deg) translateX(100px) rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(100px) rotate(-360deg)' },
+        },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },

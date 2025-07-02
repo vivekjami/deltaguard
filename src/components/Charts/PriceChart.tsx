@@ -25,8 +25,8 @@ const PriceChart: React.FC = () => {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-800 border border-slate-600 rounded-lg p-3 shadow-xl">
-          <p className="text-slate-300 text-sm mb-2">{label}</p>
+        <div className="bg-white/90 backdrop-blur-xl border border-primary-blue/20 rounded-lg p-3 shadow-xl">
+          <p className="text-slate-blue text-sm mb-2">{label}</p>
           {payload.map((entry: any, index: number) => (
             <p key={index} className="text-sm" style={{ color: entry.color }}>
               {entry.name}: {formatCurrency(entry.value)}
@@ -48,10 +48,10 @@ const PriceChart: React.FC = () => {
               <button
                 key={range.value}
                 onClick={() => setTimeRange(range.value)}
-                className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-1 rounded-lg text-sm font-medium transition-all duration-300 ${
                   timeRange === range.value
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                    ? 'bg-primary-blue text-white shadow-lg'
+                    : 'bg-slate-blue/20 text-slate-blue hover:bg-slate-blue/30'
                 }`}
               >
                 {range.label}
@@ -61,10 +61,10 @@ const PriceChart: React.FC = () => {
           
           <button
             onClick={() => setShowComparison(!showComparison)}
-            className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-3 py-1 rounded-lg text-sm font-medium transition-all duration-300 ${
               showComparison
-                ? 'bg-purple-600 text-white'
-                : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                ? 'bg-sage-green text-white shadow-lg'
+                : 'bg-slate-blue/20 text-slate-blue hover:bg-slate-blue/30'
             }`}
           >
             vs Baseline
@@ -73,13 +73,13 @@ const PriceChart: React.FC = () => {
 
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
-            <span className="text-sm text-slate-300">Portfolio</span>
+            <div className="w-3 h-3 bg-gradient-to-r from-primary-blue to-sage-green rounded-full"></div>
+            <span className="text-sm text-slate-blue">Portfolio</span>
           </div>
           {showComparison && (
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-slate-500 rounded-full"></div>
-              <span className="text-sm text-slate-300">Baseline</span>
+              <div className="w-3 h-3 bg-slate-blue rounded-full"></div>
+              <span className="text-sm text-slate-blue">Baseline</span>
             </div>
           )}
         </div>
@@ -91,24 +91,24 @@ const PriceChart: React.FC = () => {
           <AreaChart data={data}>
             <defs>
               <linearGradient id="portfolioGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3}/>
+                <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
               </linearGradient>
               <linearGradient id="baselineGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#64748b" stopOpacity={0.2}/>
-                <stop offset="95%" stopColor="#64748b" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#475569" stopOpacity={0.2}/>
+                <stop offset="95%" stopColor="#475569" stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#475569" opacity={0.2} />
             <XAxis 
               dataKey="time" 
-              stroke="#9ca3af"
+              stroke="#475569"
               fontSize={12}
               tickLine={false}
               axisLine={false}
             />
             <YAxis 
-              stroke="#9ca3af"
+              stroke="#475569"
               fontSize={12}
               tickLine={false}
               axisLine={false}
@@ -119,7 +119,7 @@ const PriceChart: React.FC = () => {
             <Area
               type="monotone"
               dataKey="portfolio"
-              stroke="#3b82f6"
+              stroke="#2563eb"
               strokeWidth={2}
               fill="url(#portfolioGradient)"
               name="Portfolio"
@@ -129,7 +129,7 @@ const PriceChart: React.FC = () => {
               <Area
                 type="monotone"
                 dataKey="baseline"
-                stroke="#64748b"
+                stroke="#475569"
                 strokeWidth={2}
                 fill="url(#baselineGradient)"
                 name="Baseline"
@@ -142,21 +142,21 @@ const PriceChart: React.FC = () => {
 
       {/* Performance Summary */}
       <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-slate-900/50 rounded-lg p-4">
-          <div className="text-xs text-slate-400 mb-1">24h Change</div>
-          <div className="text-lg font-semibold text-green-400">+2.45%</div>
+        <div className="bg-sage-green/10 rounded-lg p-4">
+          <div className="text-xs text-slate-blue mb-1">24h Change</div>
+          <div className="text-lg font-semibold text-sage-green">+2.45%</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-4">
-          <div className="text-xs text-slate-400 mb-1">7d Change</div>
-          <div className="text-lg font-semibold text-green-400">+8.12%</div>
+        <div className="bg-sage-green/10 rounded-lg p-4">
+          <div className="text-xs text-slate-blue mb-1">7d Change</div>
+          <div className="text-lg font-semibold text-sage-green">+8.12%</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-4">
-          <div className="text-xs text-slate-400 mb-1">Max Drawdown</div>
-          <div className="text-lg font-semibold text-red-400">-1.23%</div>
+        <div className="bg-red-50 rounded-lg p-4">
+          <div className="text-xs text-slate-blue mb-1">Max Drawdown</div>
+          <div className="text-lg font-semibold text-red-500">-1.23%</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-4">
-          <div className="text-xs text-slate-400 mb-1">Sharpe Ratio</div>
-          <div className="text-lg font-semibold text-blue-400">2.34</div>
+        <div className="bg-primary-blue/10 rounded-lg p-4">
+          <div className="text-xs text-slate-blue mb-1">Sharpe Ratio</div>
+          <div className="text-lg font-semibold text-primary-blue">2.34</div>
         </div>
       </div>
     </div>
