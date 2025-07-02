@@ -145,7 +145,7 @@ const HedgeEngine: React.FC<HedgeEngineProps> = ({ strategy }) => {
                 {riskMetrics.collateralHealth.toFixed(0)}%
               </span>
               <div className="text-xs text-slate-500">
-                Safe: >150%
+                Safe: &gt;150%
               </div>
             </div>
           </div>

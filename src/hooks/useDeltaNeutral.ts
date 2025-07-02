@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Strategy, RiskMetrics } from '../types';
 import { calculateRiskScore } from '../utils/calculations';
 
@@ -33,7 +33,7 @@ export const useDeltaNeutral = (strategy: Strategy) => {
     }, 3000);
   };
 
-  const assessRisk = (): RiskMetrics => {
+  const assessRisk = useCallback((): RiskMetrics => {
     const currentIL = strategy.impermanentLoss;
     const collateralHealth = strategy.collateralRatio;
     const riskScore = calculateRiskScore(currentIL, collateralHealth, strategy.deltaRatio);
@@ -45,11 +45,11 @@ export const useDeltaNeutral = (strategy: Strategy) => {
       liquidationRisk: collateralHealth < 120 ? 80 : 5,
       riskScore
     };
-  };
+  }, [strategy]);
 
   useEffect(() => {
     setRiskMetrics(assessRisk());
-  }, [strategy]);
+  }, [strategy, assessRisk]);
 
   return {
     isRebalancing,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RotateCcw, Clock, DollarSign, TrendingUp, Settings, AlertCircle } from 'lucide-react';
-import { formatCurrency, formatPercentage } from '../../utils/formatters';
+import { formatPercentage } from '../../utils/formatters';
 
 const RebalanceManager: React.FC = () => {
   const [threshold, setThreshold] = useState(5);

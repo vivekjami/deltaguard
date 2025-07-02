@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, Shield, TrendingDown, Activity, Target, Zap } from 'lucide-react';
+import { AlertTriangle, Shield, Activity, Target, Zap } from 'lucide-react';
 import RiskMetrics from '../Charts/RiskMetrics';
 
 const RiskAssessment: React.FC = () => {
