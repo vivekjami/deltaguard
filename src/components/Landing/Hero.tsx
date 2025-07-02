@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Play, Menu, X, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { Shield, Play, Menu, X, TrendingUp, DollarSign } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

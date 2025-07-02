@@ -46,7 +46,7 @@ const CallToAction: React.FC = () => {
             </button>
             
             <a
-              href="#"
+              href="/documentation"
               className="text-slate-300 hover:text-white font-semibold text-xl underline underline-offset-4 hover:underline-offset-8 transition-all duration-300"
             >
               Read Documentation
