@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import LandingPage from './components/Landing/LandingPage.tsx';
-import Dashboard from './components/Dashboard/Dashboard.tsx';
+import LandingPage from './components/Landing/LandingPage';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'landing' | 'dashboard'>('landing');
