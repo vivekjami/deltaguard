@@ -8,22 +8,17 @@ import Footer from '../components/Landing/Footer';
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white overflow-x-hidden">
-      {/* Particle Background */}
+    <div className="min-h-screen bg-gradient-to-br from-cream-50 via-white to-cream-100 text-navy-800 overflow-x-hidden">
+      {/* Elegant Background Pattern */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-20 animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
-            }}
-          ></div>
-        ))}
+        <div className="absolute inset-0 pattern-dots opacity-20"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-elegant-blue-50/30 via-transparent to-elegant-green-50/30"></div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-elegant-blue-100 to-elegant-teal-100 rounded-full opacity-20 animate-float"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-elegant-green-100 to-cream-200 rounded-full opacity-25 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-40 left-1/4 w-20 h-20 bg-gradient-to-br from-cream-200 to-elegant-blue-100 rounded-full opacity-20 animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-gradient-to-br from-elegant-teal-100 to-elegant-green-100 rounded-full opacity-15 animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <Hero />

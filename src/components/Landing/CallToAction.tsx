@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Mail, CheckCircle } from 'lucide-react';
+import { ArrowRight, Mail, CheckCircle, Sparkles } from 'lucide-react';
 
 const CallToAction: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,64 +15,69 @@ const CallToAction: React.FC = () => {
   };
 
   return (
-    <section className="py-24 px-6 lg:px-8 relative">
+    <section className="py-32 px-6 lg:px-8 relative">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-emerald-600/10"></div>
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-elegant-blue-50/50 via-transparent to-elegant-green-50/50"></div>
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-elegant-blue-200 to-transparent"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <div className="space-y-8">
-          <h2 className="text-4xl lg:text-6xl font-bold">
-            <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+      <div className="max-w-5xl mx-auto text-center relative z-10">
+        <div className="space-y-12 animate-fade-in-up">
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-elegant-blue-50 to-elegant-green-50 px-4 py-2 rounded-full border border-elegant-blue-100 mb-8">
+            <Sparkles className="w-4 h-4 text-elegant-blue-600" />
+            <span className="text-sm font-medium text-elegant-blue-700">Ready to Begin</span>
+          </div>
+
+          <h2 className="text-4xl lg:text-7xl font-serif font-semibold">
+            <span className="text-navy-900">
               Ready to Optimize Your
             </span>
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="gradient-text-elegant">
               DeFi Strategy?
             </span>
           </h2>
 
-          <p className="text-xl lg:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Start with as little as $100 in assets and experience the power of delta-neutral strategies.
+          <p className="text-xl lg:text-2xl text-elegant max-w-3xl mx-auto leading-relaxed">
+            Start with as little as $100 in assets and experience the power of delta-neutral strategies with institutional-grade sophistication.
           </p>
 
           {/* Main CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="group bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+            <button className="btn-elegant px-12 py-6 rounded-2xl font-semibold text-xl text-white shadow-elegant group">
               Launch App
-              <ArrowRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform inline" />
             </button>
             
             <a
               href="/documentation"
-              className="text-slate-300 hover:text-white font-semibold text-xl underline underline-offset-4 hover:underline-offset-8 transition-all duration-300"
+              className="text-navy-600 hover:text-elegant-blue-600 font-semibold text-xl underline underline-offset-4 hover:underline-offset-8 transition-all duration-300"
             >
               Read Documentation
             </a>
           </div>
 
           {/* Newsletter Signup */}
-          <div className="mt-16 p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg border border-slate-700/50 rounded-2xl">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Stay Updated</h3>
-            <p className="text-slate-300 mb-6">Get the latest updates on new features and strategies.</p>
+          <div className="mt-20 p-10 glass-elegant rounded-3xl shadow-elegant max-w-2xl mx-auto">
+            <h3 className="text-3xl font-serif font-semibold mb-6 text-navy-800">Stay Updated</h3>
+            <p className="text-elegant mb-8 text-lg">Get the latest updates on new features and sophisticated strategies.</p>
             
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1 relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-navy-400" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  placeholder="Enter your email address"
+                  className="w-full pl-12 pr-4 py-4 glass-subtle rounded-xl text-navy-800 placeholder-navy-500 focus:outline-none focus:ring-2 focus:ring-elegant-blue-300 transition-all"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                className="px-8 py-4 bg-gradient-elegant hover:shadow-elegant rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center text-white"
               >
                 {isSubscribed ? (
                   <>
@@ -87,17 +92,17 @@ const CallToAction: React.FC = () => {
           </div>
 
           {/* Security Badge */}
-          <div className="flex items-center justify-center space-x-4 text-slate-400 text-sm">
+          <div className="flex items-center justify-center space-x-8 text-navy-600 text-sm font-medium">
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2"></div>
+              <div className="w-3 h-3 bg-elegant-green-400 rounded-full mr-3"></div>
               Audited Smart Contracts
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+              <div className="w-3 h-3 bg-elegant-blue-400 rounded-full mr-3"></div>
               Insurance Coverage
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-amber-400 rounded-full mr-2"></div>
+              <div className="w-3 h-3 bg-cream-500 rounded-full mr-3"></div>
               24/7 Monitoring
             </div>
           </div>

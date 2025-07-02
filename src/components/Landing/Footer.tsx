@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   const quickLinks = [
     { name: 'About', href: '#' },
     { name: 'Features', href: '#features' },
-    { name: 'Documentation', href: '#' },
+    { name: 'Documentation', href: '/documentation' },
     { name: 'Terms of Service', href: '#' },
     { name: 'Privacy Policy', href: '#' }
   ];
@@ -18,39 +18,42 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="py-16 px-6 lg:px-8 border-t border-slate-700/50 relative">
+    <footer className="py-20 px-6 lg:px-8 border-t border-elegant-blue-100 relative bg-gradient-to-br from-cream-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <Shield className="w-8 h-8 text-blue-400" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="relative">
+                <Shield className="w-10 h-10 text-elegant-blue-600" />
+                <div className="absolute inset-0 bg-elegant-blue-600 rounded-full blur-lg opacity-20"></div>
+              </div>
+              <span className="text-3xl font-serif font-semibold gradient-text-elegant">
                 DeltaGuard
               </span>
             </div>
-            <p className="text-slate-300 leading-relaxed max-w-md">
+            <p className="text-elegant leading-relaxed max-w-md text-lg mb-8">
               Advanced delta-neutral liquidity management platform that eliminates impermanent loss 
               while maximizing DeFi yields through sophisticated automated strategies.
             </p>
-            <div className="mt-6 flex items-center space-x-2 text-sm text-slate-400">
+            <div className="flex items-center space-x-3 text-sm text-navy-600 font-medium">
               <span>Built for</span>
-              <div className="flex items-center space-x-1">
-                <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-sm"></div>
-                <span className="font-semibold">EulerSwap</span>
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 bg-gradient-elegant rounded-sm"></div>
+                <span className="font-semibold text-elegant-blue-700">EulerSwap</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xl font-serif font-semibold text-navy-800 mb-6">Quick Links</h3>
+            <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-slate-300 hover:text-white transition-colors"
+                    className="text-navy-600 hover:text-elegant-blue-600 transition-colors font-medium"
                   >
                     {link.name}
                   </a>
@@ -61,14 +64,14 @@ const Footer: React.FC = () => {
 
           {/* Social Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Community</h3>
+            <h3 className="text-xl font-serif font-semibold text-navy-800 mb-6">Community</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-slate-800/50 border border-slate-700 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-600 transition-all duration-300 hover:transform hover:scale-110"
+                  className="w-12 h-12 glass-subtle rounded-xl flex items-center justify-center text-navy-600 hover:text-elegant-blue-600 hover:bg-white/80 transition-all duration-300 hover:transform hover:scale-110 shadow-lg"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
@@ -78,15 +81,15 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-700/50 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-slate-400 text-sm">
+        <div className="pt-8 border-t border-elegant-blue-100 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <p className="text-navy-600 text-sm font-medium">
             © 2025 DeltaGuard. All rights reserved.
           </p>
           
-          <div className="flex items-center space-x-6 text-sm text-slate-400">
+          <div className="flex items-center space-x-8 text-sm text-navy-600 font-medium">
             <span>Secured by smart contracts</span>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+            <div className="flex items-center space-x-3">
+              <div className="w-3 h-3 bg-elegant-green-400 rounded-full animate-pulse"></div>
               <span>All systems operational</span>
             </div>
           </div>
