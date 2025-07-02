@@ -1,157 +1,46 @@
-# DeltaGuard: Advanced Delta-Neutral LP Strategy Dashboard for EulerSwap
+# Getting Started with Create React App
 
-[![EulerSwap Builder Competition](https://img.shields.io/badge/EulerSwap-Builder%20Competition-blue)](https://eulerswap.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://your-demo-link.com)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-> **🏆 Combining Essential + Advanced Builds**: Analytics Dashboard + Delta-Neutral LP Strategies
+## Available Scripts
 
-## 🎯 What is DeltaGuard?
+In the project directory, you can run:
 
-DeltaGuard is a sophisticated dashboard that leverages EulerSwap's unique architecture to create **delta-neutral liquidity provision strategies**. By combining Euler's lending infrastructure with Uniswap v4's hook system, it eliminates impermanent loss while maximizing yield.
+### `npm start`
 
-### 🔥 Key Features
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-- **📊 Real-time Analytics**: Track LP positions, yields, and IL exposure across multiple pairs
-- **⚖️ Delta-Neutral Strategies**: Automated hedging to neutralize price movement risks
-- **🎯 JIT Liquidity Optimization**: Leverage EulerSwap's up to 50x depth simulation
-- **🔄 Auto-Rebalancing**: Smart contract automation for optimal position management
-- **📈 Risk Metrics**: Advanced impermanent loss protection and monitoring
-- **💰 Unified Capital Efficiency**: Same capital powers swaps, lending, and collateral
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## 🚀 Live Demo
+### `npm test`
 
-**[Try DeltaGuard Dashboard →](https://your-demo-link.com)**
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-![Dashboard Preview](https://via.placeholder.com/800x400/0f172a/ffffff?text=DeltaGuard+Dashboard+Preview)
+### `npm run build`
 
-## 🏗️ Architecture
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   EulerSwap      │    │   Euler V2      │
-│   Dashboard     │◄──►│   DEX Hooks      │◄──►│   Lending       │
-│                 │    │                  │    │   Protocol      │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-         │                        │                        │
-         │                        │                        │
-         ▼                        ▼                        ▼
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Portfolio     │    │   Delta-Neutral  │    │   Risk          │
-│   Manager       │    │   Strategies     │    │   Engine        │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## 💎 Why This Wins
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### 🎯 Hits Both Categories
-- **Essential Build**: Comprehensive analytics dashboard with portfolio management
-- **Advanced Build**: Delta-neutral strategies with automated rebalancing
+### `npm run eject`
 
-### 🔧 Technical Innovation
-- **JIT Liquidity Integration**: Simulates up to 50x traditional AMM depth
-- **Unified Capital Model**: Same assets power multiple DeFi primitives
-- **Hook-Based Architecture**: Leverages Uniswap v4's revolutionary hook system
-- **Smart Hedging**: Automatic delta-neutral position management
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-### 📊 Real Market Value
-- **IL Protection**: Eliminates impermanent loss through smart hedging
-- **Capital Efficiency**: 3x better capital utilization than traditional AMMs
-- **Yield Optimization**: Combines LP fees + lending yield + trading revenue
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## 🛠️ Tech Stack
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS
-- **Charts**: Recharts for beautiful data visualization
-- **Icons**: Lucide React for modern iconography
-- **Deployment**: Vercel (free tier)
-- **Analytics**: Custom hooks for EulerSwap integration
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## 🚀 Quick Start
+## Learn More
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/deltaguard.git
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-# Install dependencies
-cd deltaguard
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-## 📱 Features Showcase
-
-### 📊 Multi-Strategy Dashboard
-- Track multiple delta-neutral strategies simultaneously
-- Real-time P&L monitoring with IL protection metrics
-- Portfolio allocation and rebalancing recommendations
-
-### ⚖️ Delta-Neutral Engine
-- Automated hedging to maintain market-neutral positions
-- Dynamic borrowing against LP positions using Euler's infrastructure
-- Smart contract integration for position management
-
-### 🎯 Risk Management
-- Impermanent loss monitoring and protection
-- Collateral ratio tracking and alerts
-- Liquidation risk assessment with safety margins
-
-### 📈 Yield Optimization
-- Combined LP fees + lending yield calculation
-- JIT liquidity depth simulation
-- Capital efficiency metrics and optimization
-
-## 🏆 Competition Advantages
-
-1. **Dual Category Winner**: Combines essential analytics with advanced strategies
-2. **Real Innovation**: Leverages EulerSwap's unique unified capital model
-3. **Market Ready**: Production-ready dashboard with actual utility
-4. **Technical Depth**: Deep integration with Euler V2 and Uniswap v4 hooks
-5. **User Experience**: Intuitive interface for complex DeFi operations
-
-## 📊 Performance Metrics
-
-- **Capital Efficiency**: 3x better than traditional AMMs
-- **IL Protection**: Up to 95% impermanent loss mitigation
-- **Yield Enhancement**: 2-4x higher APY through unified strategies
-- **Risk Reduction**: 60% lower volatility exposure
-
-## 🔮 Future Roadmap
-
-- [ ] Multi-chain support (Polygon, Arbitrum)
-- [ ] Advanced strategy builder interface
-- [ ] Social trading and copy-trading features
-- [ ] Integration with additional lending protocols
-- [ ] Mobile app for portfolio monitoring
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **EulerSwap Team** for the revolutionary DEX architecture
-- **Euler Labs** for the robust lending infrastructure
-- **Uniswap** for the innovative v4 hook system
-
-## 📞 Contact
-
-- **Twitter**: [@VivekJami4](https://twitter.com/VivekJami4)
-- **Discord**: vivekjami
-- **Email**: j.vivekvamsi@gmail.com
-
----
-
-<div align="center">
-  <strong>🏆 Built for EulerSwap Builder Competition 2025</strong><br>
-  <sub>Combining Essential + Advanced builds for maximum impact</sub>
-</div>
+To learn React, check out the [React documentation](https://reactjs.org/).
